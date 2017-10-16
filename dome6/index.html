@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <link rel="stylesheet" href="css/index.css">
+        <link rel="stylesheet" href="css/reset.css">
+    </head>
+    <body>
+        <input type="text" class="textInput">
+        <div class="btnAll">
+            <button type="button" class="leftIn">左侧入</button>
+            <button type="button" class="rightIn">右侧入</button>
+            <button type="button" class="leftOut">左侧出</button>
+            <button type="button" class="rightOut">右侧出</button>
+        </div>
+        <div>
+            <ul id="id-div-btnList">
+            </ul>
+        </div>
+        <button class='bubbleSort' type="button" name="button">排序</button>
+
+        </br>
+        <textarea id='id-textarea-value' name="name" rows="8" cols="80"></textarea>
+        <button type="button" class="insert">插入</button>
+        <input class='inputSearch' type="text" name="" value="">
+        <button type="button" class="search">查询</button>
+        <script src='js/reset.js'></script>
+        <script src='js/test.js'></script>
+        <script src='js/replaceAll.js'></script>
+        <script src='js/search.js'></script>
+        <script>
+            var result = []
+            // 左添加， 右添加，左删除， 右删除的4个函数
+            var bindLeftIn = function(btnList, value) {
+                var html = `<li class='liValue' style="height:${value}px">${value}</li>`
+                // log(value, html, leftIn)
+                btnList.insertAdjacentHTML('afterBegin', html)
+            }
+            var bindRightIn = function(btnList, value) {
+                var html = `<li class='liValue' style="height:${value}px">${value}</li>`
+                // log(value, html, leftIn)
+                btnList.insertAdjacentHTML('beforeend', html)
+            }
+            var bindLeftOut = function(btnList) {
+                var lis = btnList.querySelectorAll("li")
+                lis[0].remove()
+            }
+            var bindRightOut = function(btnList) {
+                var lis = btnList.querySelectorAll("li")
+                var len = lis.length - 1
+                lis[len].remove()
+            }
+            // 事件委托，在点击的时候，判断是什么classList,并执行相应的函数
+            var btnClick = function() {
+                var btnAll = e('.btnAll')
+                var btnList = e('#id-div-btnList')
+
+                btnAll.addEventListener('click', function(event) {
+                    var self = event.target
+                    var has = self.classList.contains.bind(self.classList)
+                    var lis = btnList.querySelectorAll("li")
+
+                    var textInput = e('.textInput')
+                    var value = Number(textInput.value)
+                    log('value', typeof value)
+                    // 判断是否是数字
+                    if(!isNaN(value) && value <= 100 &&  10 <= value) {
+                        if(lis.length < 60) {
+                            if(has('leftIn')) {
+                                bindLeftIn(btnList, value)
+                                result.unshift(value)
+                            } else if (has('rightIn')) {
+                                bindRightIn(btnList, value)
+                                result.push(value)
+                            } else if (has('leftOut')) {
+                                bindLeftOut(btnList)
+                                result.shift(value)
+                            } else if (has('rightOut')) {
+                                bindRightOut(btnList)
+                                result.pop(value)
+                            }
+                        } else {
+                            log(`超过了${lis.length}, 错误`)
+                        }
+                    } else {
+                        log('输入错误')
+                    }
+
+                })
+            }
+            // 点击li，并删除相应的li
+            var deleteLi = function() {
+                var btnList = e('#id-div-btnList')
+                // 事件委托
+                btnList.addEventListener('click', function(event) {
+                    var self = event.target
+                    var has = self.classList.contains.bind(self.classList)
+                    if(has('liValue')) {
+                        log('self', self)
+                        // 删除的2种方法
+                        // self.remove()
+                        btnList.removeChild(self)
+                    }
+                })
+            }
+            // 排序函数
+            var btnSort = function() {
+                var btn = e('.bubbleSort')
+
+                btn.addEventListener('click', function(event) {
+                    // 排序
+                    result.sort(function(a, b) {
+                        return a - b
+                    })
+                    log(result)
+                    // 清空原来的li
+                    var btnList = e('#id-div-btnList')
+                    btnList.innerHTML = ''
+                    // for循环添加新的li
+                    for (var i = 0; i < result.length; i++) {
+                        var value = result[i]
+                        bindRightIn(btnList, value)
+                    }
+                })
+            }
+            var bindAll = function() {
+                btnClick()
+                deleteLi()
+                btnSort()
+            }
+            var __main = function() {
+                bindAll()
+            }
+            __main()
+
+        </script>
+        <script>
+        // 任务目的
+        // 实践JavaScript数组、字符串相关操作
+        // 任务描述
+        // 基于任务四进行升级
+        // 将新元素输入框从input改为textarea（1）
+        // 允许一次批量输入多个内容，格式可以为数字、中文、英文等，
+        // 可以通过用回车，逗号（全角半角均可），顿号，空格（全角半角、Tab等均可）等符号作为不同内容的间隔
+        // 增加一个查询文本输入框，和一个查询按钮，
+        // 当点击查询时，将查询词在各个元素内容中做模糊匹配，
+        // 将匹配到的内容进行特殊标识，如文字颜色等。举例，内容中有abcd，查询词为ab或bc，则该内容需要标识
+
+        // 备注：没有中文输入
+        </script>
+    </body>
+</html>

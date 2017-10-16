@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <link rel="stylesheet" href="css/index.css">
+        <link rel="stylesheet" href="css/reset.css">
+    </head>
+    <body>
+        <input type="text" class="textInput">
+        <div class="btnAll">
+            <button type="button" class="leftIn">左侧入</button>
+            <button type="button" class="leftOut">右侧入</button>
+            <button type="button" class="rightIn">左侧出</button>
+            <button type="button" class="rightOut">右侧出</button>
+        </div>
+        <div>
+            <ul id="id-div-btnList">
+            </ul>
+        </div>
+        <script src='js/reset.js'></script>
+        <script>
+            var bindLeftIn = function(btnList) {
+                var textInput = e('.textInput')
+                var value = textInput.value
+                var leftIn = e('.leftIn')
+                var html = `<li class='liValue'>${value}</li>`
+                log(value, html, leftIn)
+                btnList.insertAdjacentHTML('afterBegin', html)
+            }
+            var bindLeftOut = function(btnList) {
+                var textInput = e('.textInput')
+                var value = textInput.value
+                var leftIn = e('.leftIn')
+                var html = `<li class='liValue'>${value}</li>`
+                log(value, html, leftIn)
+                btnList.insertAdjacentHTML('beforeend', html)
+            }
+            var bindRightIn = function(btnList) {
+                var lis = btnList.querySelectorAll("li")
+                lis[0].remove()
+            }
+            var bindRightOut = function(btnList) {
+                var lis = btnList.querySelectorAll("li")
+                var len = lis.length - 1
+                lis[len].remove()
+            }
+            var btnClick = function() {
+                var btnAll = e('.btnAll')
+                var btnList = e('#id-div-btnList')
+
+                btnAll.addEventListener('click', function(event) {
+                    var self = event.target
+                    var has = self.classList.contains.bind(self.classList)
+                    if(has('leftIn')) {
+                        bindLeftIn(btnList)
+                    } else if (has('leftOut')) {
+                        bindLeftOut(btnList)
+                    } else if (has('rightIn')) {
+                        bindRightIn(btnList)
+                    } else if (has('rightOut')) {
+                        bindRightOut(btnList)
+                    }
+                })
+            }
+            // 点击删除的函数
+            var deleteLi = function() {
+                var btnList = e('#id-div-btnList')
+                // 事件委托
+                btnList.addEventListener('click', function(event) {
+                    var self = event.target
+                    var has = self.classList.contains.bind(self.classList)
+                    if(has('liValue')) {
+                        log('self', self)
+                        // 删除的2种方法
+                        // self.remove()
+                        btnList.removeChild(self)
+                    }
+                })
+            }
+            var bindAll = function() {
+                btnClick()
+                deleteLi()
+            }
+            var __main = function() {
+                bindAll()
+            }
+            __main()
+        </script>
+        <script>
+        // 任务目的
+        // 学习与实践JavaScript的基本语法、语言特性
+        // 初步了解JavaScript的事件是什么
+        // 初步了解JavaScript中的DOM是什么
+        // 任务描述
+        // 如图，模拟一个队列，队列的每个元素是一个数字，初始队列为空
+        // 有一个input输入框，以及4个操作按钮
+        //
+        // 点击"左侧入"，将input中输入的数字从左侧插入队列中；
+        // 点击"右侧入"，将input中输入的数字从右侧插入队列中；
+        // 点击"左侧出"，读取并删除队列左侧第一个元素，并弹窗显示元素中数值；
+        // 点击"右侧出"，读取并删除队列又侧第一个元素，并弹窗显示元素中数值；
+        // 点击队列中任何一个元素，则该元素会被从队列中删除
+        </script>
+    </body>
+</html>

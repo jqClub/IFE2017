@@ -1,0 +1,15 @@
+#id-div-btnList {
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+.liValue {
+    /*不独占一行*/
+    display: inline-block;
+    /**/
+    width: 50px;
+    /*height: 50px;*/
+    border: 1px solid black;
+    background: red;
+    margin: 3px;
+}

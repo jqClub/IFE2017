@@ -1,0 +1,10 @@
+html { font-size: 62.5%; }
+.father {
+    font-size: 1.6rem;
+    width: 25rem;
+    display: flex;
+    justify-content: space-between;
+}
+.reminder {
+    font-size: 1.4rem;
+}
