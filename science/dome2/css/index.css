@@ -1,0 +1,8 @@
+form{width:600px;height: 200px;position: relative;margin:10px auto;}
+ul{width:600px;height:150px;margin:0;padding: 0;}
+li{list-style: none;width:600px;height:100px;margin:10px auto;padding: 0;}
+span{width:100px;height:30px;padding-top:15px;text-align: right;display: block;float:left;margin-right: 30px;}
+.text{width:350px;height:40px;border:2px solid #B5B5B5;border-radius: 10px;padding: 5px;font-size: 20px;outline: medium;}
+/*outline: medium;去除点击后的外边框*/
+.btn{width:100px;height:50px;background-color: #6495ED;border:none;border-radius: 8px;color:white;font-size:18px;outline: medium;margin-left:250px;}
+.tip{margin-left:130px;margin-top:10px;color:#B5B5B5;text-align: left;}
