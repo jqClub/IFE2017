@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>听指令的小方块</title>
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1, user-scalable=no">
+		<link rel="stylesheet" href="css/index.css">
+	</head>
+	<body>
+		<div class="test">
+			<div class="uuziTop">
+				<span class='uuzi'>1</span>
+				<span class='uuzi'>2</span>
+				<span class='uuzi'>3</span>
+				<span class='uuzi'>4</span>
+				<span class='uuzi'>5</span>
+				<span class='uuzi'>6</span>
+				<span class='uuzi'>7</span>
+				<span class='uuzi'>8</span>
+				<span class='uuzi'>9</span>
+				<span class='uuzi'>10</span>
+			</div>
+			<div class="">
+				<div class="uuziLeft">
+					<span class='uuzil'>1</span>
+					<span class='uuzil'>2</span>
+					<span class='uuzil'>3</span>
+					<span class='uuzil'>4</span>
+					<span class='uuzil'>5</span>
+					<span class='uuzil'>6</span>
+					<span class='uuzil'>7</span>
+					<span class='uuzil'>8</span>
+					<span class='uuzil'>9</span>
+					<span class='uuzil'>10</span>
+				</div>
+				<div class="right">
+					<table border='1' cellpadding='20' cellspacing='0'>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</table>
+					<div class="fhky">
+						<div class='fhky1'></div>
+						<div class='fhky2'></div>
+					</div>
+				</div>
+			</div>
+			<div class="input-uuru">
+				<!-- <input id='id-input-vily' type="text" name="" value=""> -->
+				<select id='id-select-xrxd'>
+					<option>GO</option>
+					<option>TUN LEF</option>
+					<option>TUN RIG</option>
+					<option>TUN BAC</option>
+					<option>TRA LEF</option>
+					<option>TRA TOP</option>
+					<option>TRA RIG</option>
+					<option>TRA BOT</option>
+					<option>MOV LEF</option>
+					<option>MOV TOP</option>
+					<option>MOV RIG</option>
+					<option>MOV BOT</option>
+				</select>
+				<button id='id-button-go' type="button" name="button">执行</button>
+				<!-- <p>备注：输入‘g’，前进；l-左转90度； r-右转90度； b-旋转180度</p> -->
+				<p>GO：向蓝色边所面向的方向前进一格（一格等同于正方形的边长 </p>
+				<p>TUN LEF：向左转（逆时针旋转90度）</p>
+				<p>TUN RIG：向右转（顺时针旋转90度）</p>
+				<p>TUN BAC：向右转（旋转180度）</p>
+				<p>TRA LEF：向屏幕的左侧移动一格，方向不变 </p>
+			    <p>TRA TOP：向屏幕的上面移动一格，方向不变 </p>
+			    <p>TRA RIG：向屏幕的右侧移动一格，方向不变 </p>
+			    <p>TRA BOT：向屏幕的下面移动一格，方向不变 </p>
+			    <p>MOV LEF：方向转向屏幕左侧，并向屏幕的左侧移动一格 </p>
+			    <p>MOV TOP：方向转向屏幕上面，向屏幕的上面移动一格 </p>
+			    <p>MOV RIG：方向转向屏幕右侧，向屏幕的右侧移动一格 </p>
+			    <p>MOV BOT：方向转向屏幕下面，向屏幕的下面移动一格 </p>
+			</div>
+		</div>
+		<!-- 使用Jquery库 -->
+		<script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src='js/index.js'></script>
+		<script>
+		// 增加新的指令如下：
+			// TRA LEF：向屏幕的左侧移动一格，方向不变
+			// TRA TOP：向屏幕的上面移动一格，方向不变
+			// TRA RIG：向屏幕的右侧移动一格，方向不变
+			// TRA BOT：向屏幕的下面移动一格，方向不变
+			// MOV LEF：方向转向屏幕左侧，并向屏幕的左侧移动一格
+			// MOV TOP：方向转向屏幕上面，向屏幕的上面移动一格
+			// MOV RIG：方向转向屏幕右侧，向屏幕的右侧移动一格
+			// MOV BOT：方向转向屏幕下面，向屏幕的下面移动一格
+		</script>
+	</body>
+</html>
