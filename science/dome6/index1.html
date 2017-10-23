@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>f15作业</title>
+    <style>
+        .window-open {
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            border-radius: 30px;
+            /**/
+            background: red;
+            /*使文字水平居中*/
+            text-align: center;
+            /*显示在正中间的位置*/
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            margin-left: -100px;
+            margin-top: -100px;
+        }
+        .close {
+            display: none !important;
+
+        }
+        .window-last {
+            /*最后一个参数 是alpha 通道， 规定了对象的不透明度*/
+            background: rgba(0, 0, 0, 0.4);
+            /*fixed定位*/
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            /*z-index 属性 可被用于在将一个元素放置在另一个元素之后*/
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div class="window-container">
+        <button class="window-show-click" data-action="show-button" type="button">确定</button>
+        <!-- <div class="window-last">
+            <div class="window-open">
+                <div class="window-show">
+                    <h2>OPA</h2>
+                    <div class="window-show-container">
+                            Something went wrong!
+                    </div>
+                    <button class="window-show-Close-Button" data-action="Close-Button" type="button">OK</button>
+                </div>
+            </div>
+        </div> -->
+    </div>
+    <script>
+        var log = console.log.bind(console)
+        var e = (sel) => {
+            return document.querySelector(sel)
+        }
+        var insertContent = (sel, html) => {
+            sel.insertAdjacentHTML('beforeend', html)
+        }
+
+        var activeShow = (title, message) => {
+            log('activeShow')
+            // var container = e('.window-container')
+            var html = `
+            <div class="window-last">
+                <div class="window-open">
+                    <div class="window-show">
+                        <h2>${title}</h2>
+                        <div class="window-show-container">
+                                ${message}
+                        </div>
+                        <button class="window-show-Close-Button" data-action="Close-Button" type="button">OK</button>
+                    </div>
+                </div>
+            </div>
+            `
+            // 判断函数
+            hasClose(html)
+        }
+        var hasClose = (html) => {
+            // var parent = event.target.closest('.window-container')
+            // var hasClose = parent.querySelector('.window-last')
+            var parent = e('.window-container')
+            var hasClose = e('.window-last')
+            log('hasClose', hasClose)
+            // 判断是否添加 或 删除close属性
+            if(hasClose == null) {
+                insertContent(parent, html)
+            } else {
+                log('has in', hasClose)
+                hasClose.classList.remove('close')
+            }
+        }
+        var activeClose = (title, message) => {
+            log('activeClose')
+            // var container = e('.window-container')
+            // var parent = event.target.closest('.window-last')
+            var parent = e('.window-last')
+            log(parent)
+            parent.classList.add('close')
+
+        }
+
+        var GuaAlert = (title, message) => {
+            // 绑定点击按钮事件
+            // 1.点击按钮， 展开弹窗
+            // 2.点击按钮， 关闭弹窗
+            var actions = {
+                'show-button' : activeShow,
+                'Close-Button' : activeClose,
+            }
+
+            var container = e('.window-container')
+            container.addEventListener('click', function(event) {
+                log('container click')
+                var self = event.target
+                // log(self)
+                // 找到对应的按钮，绑定不同的事件
+                var actionName = self.dataset.action
+                // log(actionName)
+                var action = actions[actionName]
+                if(action != undefined) {
+                    action(title, message)
+                }
+            })
+        }
+
+        var __main = () => {
+            GuaAlert('title', 'message')
+        }
+        __main()
+    </script>
+</body>
+</html>
