@@ -1,0 +1,29 @@
+th, td {
+	width: 100px;
+	height: 40px;
+	text-align: center;
+}
+/* 三角形箭头 */
+/* 向上的箭头 */
+.triangleT {
+	width: 0;
+	height: 0;
+	border-bottom: 10px solid  yellowgreen;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+}
+/* 向下的箭头 */
+.triangleB {
+	margin-top: 5px;
+
+	width: 0px;
+	height: 0px;
+	border-top: 10px solid  yellowgreen;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+}
+.jmtb {
+	float: right;
+	position: relative;
+	right: 10px;
+}
